@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Page</title>
+  </head>
+  <body>
+     
+    <h1 id="results_header">Recommended papers based on: <span id="searchby"</span></h1>
+	<div id="responseMessage"></div>
+    <script>
+      const papers = JSON.parse(sessionStorage.getItem('responseMessage'));
+      document.getElementById("searchby").textContent = papers.search_by;
+     
+      // Clear previous content
+      document.getElementById('responseMessage').innerHTML = '';
+
+      papers.feed.entry.forEach((paper, index) => {
+	  // Create a container for each paper entry
+	  const paperContainer = document.createElement('div');
+	  paperContainer.style.border = '1px solid #ddd';
+	  paperContainer.style.padding = '10px';
+	  paperContainer.style.margin = '10px 0';
+	  paperContainer.style.backgroundColor = '#f9f9f9';
+	  paperContainer.style.borderRadius = '8px';
+
+	  // Create a title link
+	  const titleLink = document.createElement('a');
+	  titleLink.href = paper.link.find(link => link['@rel'] === 'alternate')['@href']; // Find the link to the paper
+	  titleLink.textContent = paper.title;
+	  titleLink.style.fontSize = '18px';
+	  titleLink.style.fontWeight = 'bold';
+	  titleLink.style.textDecoration = 'none';
+	  titleLink.style.color = '#1a0dab';
+
+	  // Create a paragraph for the authors
+	  const authors = document.createElement('p');
+	  authors.textContent = 'Authors: ' + paper.author.map(author => author.name).join(', ');
+	  authors.style.margin = '8px 0 4px';
+	  authors.style.color = '#333';
+
+	  // Create a paragraph for the published date
+	  const publishedDate = document.createElement('p');
+	  publishedDate.textContent = 'Published: ' + new Date(paper.published).toLocaleDateString();
+	  publishedDate.style.margin = '4px 0';
+	  publishedDate.style.color = '#555';
+
+	  // Append the elements to the paper container
+	  paperContainer.appendChild(titleLink);
+	  paperContainer.appendChild(authors);
+	  paperContainer.appendChild(publishedDate);
+
+	  // Append the paper container to the responseMessage div
+	  document.getElementById('responseMessage').appendChild(paperContainer);
+      });
+    </script>
+    </script>
+  </body>
+</html>

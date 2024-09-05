@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Papers</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+	<ul>
+	  <li><a href="/">Home</a></li>
+	  <li><a href="/about">About</a></li>
+	  <li><a href="/contact">Contact Us</a></li>
+	</ul>
+	<div class="auth-buttons">
+	  <button class="signup">SIGN UP FREE</button>
+	  <button class="login">LOG IN</button>
+	</div>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Search papers by</h1>
+      <div class="search-container">
+	<label>
+	  <input type="radio" name="searchBy" value="title" checked>
+	  Title
+	</label>
+	<label>
+	  <input type="radio" name="searchBy" value="abstract">
+	  Abstract
+	</label>
+	<div id="inputContainer">
+	  <input type="text" id="query" class="searchTitle" placeholder="Enter title">
+	</div>
+	<div id="buttonContainer">
+	  <button id="search_submit_Button">Search</button>
+	          </div>
+      </div>
+    </main>
+
+    <footer>
+      <ul>
+	<li><a href="#"><img src="email-icon.png" alt="Email"></a></li>
+	<li><a href="#"><img src="twitter-icon.png" alt="Twitter"></a></li>
+	<li><a href="#"><img src="github-icon.png" alt="GitHub"></a></li>
+      </ul>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>  
+  </body>
+</html>
