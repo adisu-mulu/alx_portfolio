@@ -34,6 +34,14 @@
 	  titleLink.style.textDecoration = 'none';
 	  titleLink.style.color = '#1a0dab';
 
+	      // Create a paragraph for the summary/abstract
+	      const summary = document.createElement('p');
+	      summary.textContent = 'Summary: ' + paper.summary;
+	      summary.style.margin = '8px 0 4px';
+	      summary.style.color = '#444';
+	      summary.style.fontStyle = 'italic';
+
+	 
 	  // Create a paragraph for the authors
 	  const authors = document.createElement('p');
 	  authors.textContent = 'Authors: ' + paper.author.map(author => author.name).join(', ');
@@ -48,6 +56,9 @@
 
 	  // Append the elements to the paper container
 	  paperContainer.appendChild(titleLink);
+	  if (papers.search_by === 'Abstract'){
+	      paperContainer.appendChild(summary);
+	  }
 	  paperContainer.appendChild(authors);
 	  paperContainer.appendChild(publishedDate);
 
